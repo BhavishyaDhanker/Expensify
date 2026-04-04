@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "954895353426",
+    "project_id": "my-awesome-project96",
+    "storage_bucket": "my-awesome-project96.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954895353426:android:8dfe547bcaa507a5d5c18b",
+        "android_client_info": {
+          "package_name": "com.example.expensify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2AMge9yP8tM4S0Gm8aSoe94zFNUT_L8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
