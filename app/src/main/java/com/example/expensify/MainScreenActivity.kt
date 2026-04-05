@@ -2,29 +2,23 @@ package com.example.expensify
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.expensify.databinding.ActivityLogInBinding
+import com.example.expensify.databinding.ActivityMainScreenBinding
 
-class LogInActivity : AppCompatActivity() {
+class MainScreenActivity : AppCompatActivity() {
 
-    lateinit private var binding: ActivityLogInBinding
+    lateinit var binding: ActivityMainScreenBinding
 
-    private val viewModel: LogInViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLogInBinding.inflate(layoutInflater)
+        binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setUpListeners()
+        binding.bottomNav
         }
-
-    private fun setUpListeners(){
-
-
-    }
     }

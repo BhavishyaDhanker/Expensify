@@ -9,6 +9,11 @@ android {
         version = release(36) {
             minorApiLevel = 1
         }
+
+
+        buildFeatures{
+            viewBinding = true
+        }
     }
 
     defaultConfig {
@@ -52,4 +57,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 }

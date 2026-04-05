@@ -1,8 +1,10 @@
 package com.example.expensify
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.tasks.await
 
 class FirebaseRepository {
@@ -44,5 +46,16 @@ class FirebaseRepository {
             Result.failure(e)
         }
    }
+
+    suspend fun getUser(uid: String): User?{
+        return try {
+            val result = db.collection("Users").document(uid).get().await()
+
+            result.toObject<User>()
+        }catch (e: Exception){
+                Log.e("Firebase", e.message, e)
+                null
+        }
+    }
 }
 
