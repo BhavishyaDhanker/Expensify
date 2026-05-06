@@ -15,10 +15,14 @@ class LogInViewModel: ViewModel() {
     private val _user = MutableStateFlow<User?>(User())
     private val _errorMsg = MutableStateFlow<String?>(null)
     private val _isLogInSuccess = MutableStateFlow<Boolean?>(null)
+    private val _passError = MutableStateFlow<String?>(null)
+    private val _isForgotPassSuccess = MutableStateFlow<Boolean?>(null)
 
     val user = _user.asStateFlow()
     val errorMsg = _errorMsg.asStateFlow()
     val isLogInSuccess = _isLogInSuccess.asStateFlow()
+    val passError = _passError.asStateFlow()
+    val isForgotPassSuccess = _isForgotPassSuccess.asStateFlow()
 
 
     fun loginUser(email: String, pass: String){
@@ -46,6 +50,31 @@ class LogInViewModel: ViewModel() {
             }
         }
 
+    }
+
+
+    fun forgotPass(email: String){
+        viewModelScope.launch {
+            _passError.value = null
+            _isForgotPassSuccess.value = null
+
+            val result = fbrepo.resetPass(email)
+
+            result.onSuccess {
+                _isForgotPassSuccess.value = true
+            }
+                .onFailure { error->
+                    _passError.value = error.message
+                    _isForgotPassSuccess.value = false
+                }
+        }
+    }
+
+    fun resetStates(){
+        _passError.value = null
+        _errorMsg.value = null
+        _isLogInSuccess.value = null
+        _isForgotPassSuccess.value = null
     }
 }
 

@@ -30,10 +30,11 @@ class LogInActivity : AppCompatActivity() {
         }
 
     private fun setUpListeners(){
+
+
         binding.login.setOnClickListener {
             val email = binding.emailInput.text.toString().trim()
             val pass = binding.passwordInput.text.toString().trim()
-
             if (email.isNotEmpty() && pass.isNotEmpty() ) {
                 viewModel.loginUser(email, pass)
             }
@@ -49,14 +50,19 @@ class LogInActivity : AppCompatActivity() {
         }
 
         binding.tvForgot.setOnClickListener {
-
+            val email = binding.emailInput.text.toString().trim()
+            if (email.isNotEmpty()){
+                viewModel.forgotPass(email)
+            }else {
+                Toast.makeText(this@LogInActivity, "Please enter Email", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
 
     private fun observeViewModel(){
 
-        lifecycleScope.launch(){
+        lifecycleScope.launch{
             viewModel.isLogInSuccess.collect { success ->
                 if (success == true) {
                     val intent = Intent(this@LogInActivity, MainScreenActivity::class.java)
@@ -71,8 +77,27 @@ class LogInActivity : AppCompatActivity() {
             viewModel.errorMsg.collect { msg->
                 if (msg != null){
                     Toast.makeText(this@LogInActivity, msg, Toast.LENGTH_SHORT).show()
+                    viewModel.resetStates()
                 }
 
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.isForgotPassSuccess.collect { success->
+                if (success == true){
+                    Toast.makeText(this@LogInActivity, "Password changed Successfully!!", Toast.LENGTH_SHORT).show()
+                    viewModel.resetStates()
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.passError.collect { error->
+                if (error != null){
+                    Toast.makeText(this@LogInActivity, error, Toast.LENGTH_SHORT).show()
+                    viewModel.resetStates()
+                }
             }
         }
 
