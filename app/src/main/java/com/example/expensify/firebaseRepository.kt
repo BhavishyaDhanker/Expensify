@@ -19,7 +19,7 @@ class FirebaseRepository {
         return try {
             val authResult =  auth.createUserWithEmailAndPassword(userModel.email, password).await()
 
-            val uid = authResult.user?.uid ?: ""
+            val uid = authResult.user?.uid ?: throw Exception("Failed to get uid")
             val finalUser = userModel.copy(uid = uid)
 
             db.collection("Users").document(uid).set(finalUser).await()

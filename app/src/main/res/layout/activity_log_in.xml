@@ -60,7 +60,6 @@
                 app:cardBackgroundColor="#E7E8E9">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/emailInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/mail">
@@ -68,6 +67,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/emailInput"
                         android:paddingStart="48dp"
                         android:hint="name@email.com"
                         android:background="@android:color/transparent"
@@ -114,7 +114,6 @@
                 app:cardBackgroundColor="#E7E8E9">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/passwordInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/lock"
@@ -124,6 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="48dp"
+                        android:id="@+id/passwordInput"
                         android:hint="Enter Password"
                         android:background="@android:color/transparent"
                         android:inputType="textPassword"

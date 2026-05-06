@@ -1,12 +1,17 @@
 package com.example.expensify
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import com.example.expensify.databinding.ActivityLogInBinding
+import kotlinx.coroutines.launch
 
 class LogInActivity : AppCompatActivity() {
 
@@ -21,10 +26,55 @@ class LogInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpListeners()
+        observeViewModel()
         }
 
     private fun setUpListeners(){
+        binding.login.setOnClickListener {
+            val email = binding.emailInput.text.toString().trim()
+            val pass = binding.passwordInput.text.toString().trim()
 
+            if (email.isNotEmpty() && pass.isNotEmpty() ) {
+                viewModel.loginUser(email, pass)
+            }
+            else{
+                Toast.makeText(this, "Fill all the details !!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.llSignUp.setOnClickListener {
+            val intent = Intent(this@LogInActivity, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.tvForgot.setOnClickListener {
+
+        }
 
     }
+
+    private fun observeViewModel(){
+
+        lifecycleScope.launch(){
+            viewModel.isLogInSuccess.collect { success ->
+                if (success == true) {
+                    val intent = Intent(this@LogInActivity, MainScreenActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        // every .collect is an infinite function it never finishes(until the activity dies) so anything written after that is just going to
+        // be ignored     hence we need to create another lifecycleScope instance for any other .collect
+        lifecycleScope.launch {
+            viewModel.errorMsg.collect { msg->
+                if (msg != null){
+                    Toast.makeText(this@LogInActivity, msg, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        }
+
     }
+}
