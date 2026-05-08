@@ -6,4 +6,6 @@
     <color name="background">#F6F6F8</color>
     <color name="mainText">#001944</color>
     <color name="link">#2E7BFF</color>
+    <color name="Secondary">#0C3694</color>
+    <color name="imgBg">#E8E5FF</color>
 </resources>

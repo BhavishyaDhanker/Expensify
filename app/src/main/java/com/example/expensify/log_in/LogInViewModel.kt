@@ -1,11 +1,11 @@
-package com.example.expensify
+package com.example.expensify.log_in
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import com.google.android.play.core.integrity.p
+import androidx.lifecycle.viewModelScope
+import com.example.expensify.FirebaseRepository
+import com.example.expensify.User
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class LogInViewModel: ViewModel() {
@@ -77,4 +77,3 @@ class LogInViewModel: ViewModel() {
         _isForgotPassSuccess.value = null
     }
 }
-

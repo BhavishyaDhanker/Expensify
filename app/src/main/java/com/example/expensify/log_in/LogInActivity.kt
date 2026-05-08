@@ -1,15 +1,14 @@
-package com.example.expensify
+package com.example.expensify.log_in
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
+import com.example.expensify.log_in.LogInViewModel
+import com.example.expensify.MainScreenActivity
+import com.example.expensify.sign_up.SignUpActivity
 import com.example.expensify.databinding.ActivityLogInBinding
 import kotlinx.coroutines.launch
 
@@ -62,7 +61,7 @@ class LogInActivity : AppCompatActivity() {
 
     private fun observeViewModel(){
 
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             viewModel.isLogInSuccess.collect { success ->
                 if (success == true) {
                     val intent = Intent(this@LogInActivity, MainScreenActivity::class.java)
