@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.expensify.MainScreenActivity
+import com.example.expensify.MainScreen.MainScreenActivity
 import com.example.expensify.R
 import com.example.expensify.databinding.ActivitySignUpBinding
 import com.example.expensify.log_in.LogInActivity

@@ -8,4 +8,6 @@
     <color name="link">#2E7BFF</color>
     <color name="Secondary">#0C3694</color>
     <color name="imgBg">#E8E5FF</color>
+    <color name="negative">#FF6B6B</color>
+    <color name="positive">#5DD067</color>
 </resources>

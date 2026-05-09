@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.expensify.log_in.LogInViewModel
-import com.example.expensify.MainScreenActivity
+import com.example.expensify.MainScreen.MainScreenActivity
 import com.example.expensify.sign_up.SignUpActivity
 import com.example.expensify.databinding.ActivityLogInBinding
 import kotlinx.coroutines.launch
